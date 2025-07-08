@@ -2,23 +2,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class StudyDictionary : MonoBehaviour
+public class PersonData
 {
-    public Dictionary<string, int> persons = new Dictionary<string, int>();
+    public int age;
+    public string name;
+    public float height;
+    public float weight;
 
-    void Start()
+    public PersonData(int _age, string _name, float _height, float _weight)
     {
-        persons.Add("철수",13);
-        persons.Add("영희",14);
-        persons.Add("동수",15);
-        
-        int age = persons["철수"];
-        Debug.Log($"철수의 나이는{age}입니다.");
-        
-        foreach (var person in persons)
+        age = _age;
+        name = _name;
+        height = _height;
+        weight = _weight;
+    }
+
+    public class StudyDictionary : MonoBehaviour
+    {
+        public Dictionary<string, PersonData> persons = new Dictionary<string, PersonData>();
+
+        void Start()
         {
-            if(person.Value == 15)
-                Debug.Log($"나이가 15세 인 사람은 {persons[person.Key]} 입니다.");
+            persons.Add("철수", new PersonData(13, "철수", 150f, 50f));
         }
     }
 }
+
