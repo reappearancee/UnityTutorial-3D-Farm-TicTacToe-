@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DynamicArray : MonoBehaviour
 {
+    //동적배열
     private object[] array = new object[0];
 
     public void Add(object o)
