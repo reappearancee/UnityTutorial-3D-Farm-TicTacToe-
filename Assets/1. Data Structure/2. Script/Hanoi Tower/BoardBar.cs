@@ -53,6 +53,9 @@ public class BoardBar : MonoBehaviour
         HanoiTower.selectedDonut = null;
         
         donut.transform.position = transform.position + Vector3.up * 5f;
+        donut.GetComponent<Rigidbody>().linearVelocity = Vector3.zero; 
+        donut.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; // 리지드 바디 초기화 하는 이유는 빠르게 눌렀을 때 팅김 방지
+        
         barStack.Push(donut); // Stack에 GameObject를 넣는 기능
     }
 

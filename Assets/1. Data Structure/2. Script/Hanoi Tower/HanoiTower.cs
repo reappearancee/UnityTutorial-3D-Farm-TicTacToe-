@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HanoiTower : MonoBehaviour
 {
-    public enum HanoiLevel { Lv1 = 3, Lv2, Lv3 }
+    public enum HanoiLevel { Lv1 = 3, Lv2, Lv3 } //도넛의 갯수 때문에 3부터 시작 
     public HanoiLevel hanoiLevel;
 
     public GameObject[] donutPrefabs;
