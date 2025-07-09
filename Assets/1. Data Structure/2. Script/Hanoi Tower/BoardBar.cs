@@ -10,14 +10,14 @@ public class BoardBar : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!HanoiTower.isSeleted)
+        if (!HanoiTower.isSelected)
         {
-            HanoiTower.isSeleted = true;
+            HanoiTower.isSelected = true;
             HanoiTower.selectedDonut = PopDonut();
         }
         else // 선택된 상태 
         {
-            HanoiTower.isSeleted = false; 
+            HanoiTower.isSelected = false; 
             PushDonut(HanoiTower.selectedDonut);
         }
     }
@@ -40,19 +40,18 @@ public class BoardBar : MonoBehaviour
                 return false;
             }
         }
-
-        return true;
+        return true; 
     }
 
     public void PushDonut(GameObject donut)
     {
         if (!CheckDonut(donut))
-            return;
+            return; // 종료
         
-        HanoiTower.isSeleted = false;
+        HanoiTower.isSelected = false;
         HanoiTower.selectedDonut = null;
         
-        donut.transform.position = transform.position + Vector3.up * 5f;
+        donut.transform.position = transform.position + Vector3.up * 5f; //이동
         donut.GetComponent<Rigidbody>().linearVelocity = Vector3.zero; 
         donut.GetComponent<Rigidbody>().angularVelocity = Vector3.zero; // 리지드 바디 초기화 하는 이유는 빠르게 눌렀을 때 팅김 방지
         
