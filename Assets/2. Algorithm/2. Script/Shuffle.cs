@@ -27,4 +27,7 @@ public class Shuffle : MonoBehaviour
         array[i] = array[j];
         array[j] = temp;
     }
+    
+    
+    //대여장비 TEST 중
 }
