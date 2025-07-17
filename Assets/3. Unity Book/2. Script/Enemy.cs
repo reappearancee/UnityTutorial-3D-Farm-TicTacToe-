@@ -8,17 +8,17 @@ public class Enemy : MonoBehaviour
 
     public GameObject explosionFactory;
     
-    void Start()
+    void OnEnable()
     {
         int ranValue = UnityEngine.Random.Range(0, 10);
 
-        if (ranValue < 3) // 30% 확률로 Player쪽으로 
+        if (ranValue < 7) // 70%
         {
             GameObject target = GameObject.Find("Player");
             dir = target.transform.position - transform.position; // 플레이어를 바라보는 방향 값
             dir.Normalize();
         }
-        else // 70% 확률로 아래로 내려감
+        else // 70%
         {
             dir = Vector3.down;
         }
@@ -26,23 +26,27 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        transform.position += dir * speed * Time.deltaTime; // 속도
+        transform.position += dir * speed * Time.deltaTime;
     }
     
     private void OnCollisionEnter(Collision other)
     {
-        GameObject smObject = GameObject.Find("ScoreManager");//ScoreManager 스크립트
-        ScoreManager sm = smObject.GetComponent<ScoreManager>(); 
+        ScoreManager.Instance.Score++;
         
-        var score = sm.GetScore() + 1; 
-        sm.SetScore(score);
-
-        //파티클 생성
         GameObject explosion = Instantiate(explosionFactory);
         explosion.transform.position = transform.position;
-        
-        //파괴
-        Destroy(other.gameObject);
-        Destroy(gameObject);
+
+        if (other.gameObject.name.Contains("Bullet"))
+        {
+            // PlayerFire player = GameObject.Find("Player").GetComponent<PlayerFire>();
+            PlayerFire.Instance.bulletObjectPool.Enqueue(other.gameObject);
+            other.gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(other.gameObject); // 플레이어 오브젝트
+        }
+
+        gameObject.SetActive(false);
     }
 }
