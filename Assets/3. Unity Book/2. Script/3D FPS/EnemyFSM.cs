@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +9,10 @@ public class EnemyFSM : MonoBehaviour
     private enum EnemyState { Idle, Move, Attack, Return, Damaged, Die }
     private EnemyState m_State;
 
-    private Animator anim;
-
     private Transform player; // 타겟
     private CharacterController cc;
+
+    private Animator anim;
 
     public float findDistance = 8f; // 탐지 거리
     public float attackDistance = 3f; // 공격 가능 거리
@@ -24,8 +23,7 @@ public class EnemyFSM : MonoBehaviour
 
     public int attackPower = 3;
     public int hp = 15;
-    
-    public int maxHp = 15;
+    private int maxHp = 15;
     public Slider hpSlider;
 
     private Vector3 originPos;
@@ -38,14 +36,13 @@ public class EnemyFSM : MonoBehaviour
         cc = GetComponent<CharacterController>();
         originPos = transform.position;
         anim = transform.GetComponentInChildren<Animator>();
-        
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        hpSlider.value = (float)hp / (float)maxHp;
         switch (m_State)
         {
             case EnemyState.Idle:
@@ -67,6 +64,8 @@ public class EnemyFSM : MonoBehaviour
                 // Die();
                 break;
         }
+        
+        hpSlider.value = (float)hp / (float)maxHp;
     }
 
     private void Idle()
@@ -83,7 +82,6 @@ public class EnemyFSM : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, originPos) > moveDistance)
         {
-            
             m_State = EnemyState.Return;
             Debug.Log("상태 전환 : Move -> Return");
         }
@@ -91,7 +89,8 @@ public class EnemyFSM : MonoBehaviour
         {
             Vector3 dir = (player.position - transform.position).normalized;
             cc.Move(dir * moveSpeed * Time.deltaTime);
-            transform.forward = dir;
+            
+            transform.forward = dir; // 이동 방향을 정면으로 적용
         }
         else // 타겟이 공격 거리 내에 있는 경우 -> 공격 전환
         {
