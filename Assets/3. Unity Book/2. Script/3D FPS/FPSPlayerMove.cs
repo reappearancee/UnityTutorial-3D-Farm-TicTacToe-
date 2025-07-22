@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,8 @@ public class FPSPlayerMove : MonoBehaviour
     private int maxHp = 20;
     public Slider hpSlider;
 
+    public Animator anim;
+
     public GameObject hitEffect;
 
     public float JumpPower
@@ -31,6 +34,7 @@ public class FPSPlayerMove : MonoBehaviour
     void Start()
     {
         cc = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<Animator>();
     }
     void Update()
     {
@@ -40,8 +44,11 @@ public class FPSPlayerMove : MonoBehaviour
         float h =  Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         
+        
+        
         Vector3 dir = new Vector3(h, 0, v); //크기와 방향이 있는 벡터
         dir.Normalize(); //방향만 있는 벡터
+        anim.SetFloat("MoveMotion",dir.magnitude);
         
         //카메라 기준 방향으로 변경
         dir = Camera.main.transform.TransformDirection(dir);
