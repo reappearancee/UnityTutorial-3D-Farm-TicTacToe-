@@ -15,14 +15,13 @@ public class AgentController : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, points[index].position) < 1.5f)
+        if (Vector3.Distance(transform.position, points[index].position) < 3.5f)
         {
             index++;
             if (index >= points.Length)
-            {
                 index = 0;
-                agent.SetDestination(points[index].position);
-            }
+            
+            agent.SetDestination(points[index].position);
         }
     }
 }
