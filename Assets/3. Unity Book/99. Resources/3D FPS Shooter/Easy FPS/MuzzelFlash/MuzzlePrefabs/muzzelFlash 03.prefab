@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2362062}
   - component: {fileID: 10879326}
   - component: {fileID: 114134455802474916}
-  - component: {fileID: -6887894176526164914}
+  - component: {fileID: -6774108332888297859}
   m_Layer: 0
   m_Name: muzzelFlash 03
   m_TagString: Untagged
@@ -103,7 +103,7 @@ Light:
   m_Intensity: 4
   m_Range: 4.124674
   m_SpotAngle: 30
-  m_InnerSpotAngle: 21.802082
+  m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 0.05
---- !u!114 &-6887894176526164914
+--- !u!114 &-6774108332888297859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
