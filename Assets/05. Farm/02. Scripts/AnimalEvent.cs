@@ -1,0 +1,24 @@
+using System;
+using Unity.Cinemachine;
+using UnityEngine;
+
+public class AnimalEvent : MonoBehaviour
+{
+    [SerializeField] private CinemachineClearShot clearShot; // 관리 카메라
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GameManager.Instance.SetCameraState(CameraState.Animal);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GameManager.Instance.SetCameraState(CameraState.Outside);
+        }
+    }
+}
