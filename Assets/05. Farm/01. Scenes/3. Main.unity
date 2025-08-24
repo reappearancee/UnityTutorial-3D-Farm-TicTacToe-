@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a826691ae3f7496fba1ddd5b2cd308aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellPrefab: {fileID: 5955803867570947030, guid: fdb1b17631d3b4f44988ea50225fc8ad, type: 3}
+  cellPrefab: {fileID: 5955803867570947030, guid: a8e7c9c54a73048cd959efe768ed3754, type: 3}
   boardPanel: {fileID: 1756804450}
   statusText: {fileID: 2000358999}
   restartButton: {fileID: 1881918975}
@@ -2150,8 +2150,8 @@ Transform:
   - {fileID: 1825429042}
   - {fileID: 1423989213}
   - {fileID: 123907489}
-  - {fileID: 425041561}
   - {fileID: 100368321}
+  - {fileID: 425041561}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &362028491
@@ -4148,7 +4148,7 @@ MonoBehaviour:
   - {fileID: 1000013984154124, guid: d9f37793bfb87474bad6fb2957b548f5, type: 3}
   fieldLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 262144
 --- !u!4 &687681448
 Transform:
   m_ObjectHideFlags: 0
